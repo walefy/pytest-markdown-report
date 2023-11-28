@@ -32,3 +32,24 @@ def test_example_07():
 @pytest.mark.skip(reason="Not implemented yet")
 def test_example_08():
     assert False
+
+
+def test_example_09():
+    assert False
+
+
+def test_example_10():
+    assert False
+
+
+def test_example_11():
+    assert True
+
+
+def test_example_12():
+    assert True
+
+
+@pytest.mark.skip(reason="Not implemented yet")
+def test_example_13():
+    assert True

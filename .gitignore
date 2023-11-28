@@ -2,3 +2,5 @@ target
 venv
 .vscode
 report.md
+__pycache__
+.pytest_cache
