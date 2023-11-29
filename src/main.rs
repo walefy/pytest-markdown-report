@@ -102,7 +102,7 @@ fn main() {
     let mut tests: Vec<String> = Vec::new();
     let mut map_optional_sections: HashMap<&str, String> = HashMap::new();
 
-    let config_content = read_file(args.config_file).expect("Failed to read config file");
+    let config_content = read_file(args.config_file).unwrap_or(String::new());
     let eval_config = EvalConfig::new(config_content);
     let config_emojis_map = eval_config.read_variables("e");
 
