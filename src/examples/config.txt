@@ -1,0 +1,13 @@
+e passed = ✅
+e failed = ❌
+e skipped = ⏭️
+
+h = # Relatório
+h = 
+h = Exemplo de texto padrão no header
+h =
+h = ```bash
+h = echo "exemplo do header aceitando markdown"
+h = ```
+
+f = ## Footer examples
