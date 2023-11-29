@@ -5,13 +5,13 @@ pub struct EvalConfig {
 }
 
 pub trait EvalConfigTrait {
-    fn read_emojis(&self) -> HashMap<String, String>;
+    fn read_variables(&self, variable_prefix: &str) -> HashMap<String, String>;
     fn read_section(&self, section_prefix: &str) -> String;
     fn new(file_path: String) -> EvalConfig;
 }
 
 impl EvalConfigTrait for EvalConfig {
-    fn read_emojis(&self) -> HashMap<String, String> {
+    fn read_variables(&self, variable_prefix: &str) -> HashMap<String, String> {
         let mut result: HashMap<String, String> = HashMap::new();
 
         for line in self.content.lines() {
@@ -27,7 +27,7 @@ impl EvalConfigTrait for EvalConfig {
                 Err(_) => continue,
             }
 
-            if prefix != "e" {
+            if prefix != variable_prefix {
                 continue;
             }
 

@@ -104,7 +104,7 @@ fn main() {
 
     let config_content = read_file(args.config_file).expect("Failed to read config file");
     let eval_config = EvalConfig::new(config_content);
-    let config_emojis_map = eval_config.read_emojis();
+    let config_emojis_map = eval_config.read_variables("e");
 
     map_optional_sections.insert("header", eval_config.read_section("h"));
     map_optional_sections.insert("footer", eval_config.read_section("f"));
