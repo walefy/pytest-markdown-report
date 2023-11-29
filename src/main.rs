@@ -1,41 +1,14 @@
+mod args;
 mod eval_config;
 
-use clap::{self, ArgAction, Parser};
+use args::Args;
+use clap::Parser;
 use eval_config::{EvalConfig, EvalConfigTrait};
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, Error, Read};
 use std::process::Command;
-
-#[derive(Parser, Debug)]
-#[command(author = "Walefy", version = "0.0.1", about = "pytest markdown report", long_about = None)]
-struct Args {
-    #[arg(short, long, default_value = "report.md")]
-    output: String,
-
-    #[arg(long, action = ArgAction::SetTrue)]
-    /// Turn off auto run command pytest.
-    ///
-    /// Usage example:
-    /// ```
-    /// pytest -v | pytest_markdown_report --no-auto
-    /// ```
-    no_auto: bool,
-
-    #[arg(short, long, default_value = "./")]
-    /// directory where the tests are
-    target_folder: String,
-
-    #[arg(short, long, default_value = "")]
-    /// set a config file
-    ///
-    /// usage example:
-    /// ```
-    /// pytest_markdown_report -c src/examples/config.txt
-    /// ```
-    config_file: String,
-}
 
 fn write_md(
     list: Vec<String>,
