@@ -76,8 +76,16 @@ fn read_file(file_path: String) -> Result<String, Error> {
     Ok(lines_string)
 }
 
+fn get_or_default(map: &HashMap<String, String>, key: &str, default: String) -> String {
+    map.get(&key.to_string()).unwrap_or(&default).to_string()
+}
+
 fn main() {
     let args: Args = Args::parse();
+    let config_content = read_file(args.config_file).unwrap_or(String::new());
+    let eval_config = EvalConfig::new(config_content);
+
+    let config_in_file = eval_config.read_variables("c");
 
     let output: String = if args.no_auto {
         let stdin = io::stdin();
@@ -87,8 +95,9 @@ fn main() {
 
         line
     } else {
+        let curr_dir = get_or_default(&config_in_file, "target-folder", args.target_folder);
         let command_output = Command::new("pytest")
-            .current_dir(args.target_folder)
+            .current_dir(curr_dir)
             .args(["-v", "-W", "ignore::DeprecationWarning"])
             .output()
             .expect("failed to execute process");
@@ -102,8 +111,6 @@ fn main() {
     let mut tests: Vec<String> = Vec::new();
     let mut map_optional_sections: HashMap<&str, String> = HashMap::new();
 
-    let config_content = read_file(args.config_file).unwrap_or(String::new());
-    let eval_config = EvalConfig::new(config_content);
     let config_emojis_map = eval_config.read_variables("e");
 
     map_optional_sections.insert("header", eval_config.read_section("h"));
@@ -127,7 +134,8 @@ fn main() {
         tests.push(format!("{} | {}", test_name, emoji));
     }
 
-    let result = write_md(tests, map_optional_sections, args.output);
+    let output = get_or_default(&config_in_file, "output", args.output);
+    let result = write_md(tests, map_optional_sections, output);
 
     match result {
         Ok(_) => {}

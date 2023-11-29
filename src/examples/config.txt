@@ -1,6 +1,14 @@
+// e = emoji
+// c = config
+// h = header
+// f = footer
+
 e passed = ✅
 e failed = ❌
 e skipped = ⏭️
+
+c output = ./relatorio.md
+c target-folder = ./src/examples/test/unit_example
 
 h = # Relatório
 h =
