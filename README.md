@@ -139,31 +139,31 @@ h = ```
 Clone o projeto
 
 ```bash
-  git clone git@github.com:walefy/pytest-markdown-report.git
+git clone git@github.com:walefy/pytest-markdown-report.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd pytest-markdown-report
+cd pytest-markdown-report
 ```
 
 Rode a versão de desenvolvimento
 
 ```bash
-  cargo run
+cargo run
 ```
 
 Ou a versão otimizada
 
 ```bash
-  cargo run --release
+cargo run --release
 ```
 
 Passando flags
 
 ```bash
-  cargo run --release -- -c ./config.txt
+cargo run --release -- -c ./config.txt
 ```
 
 ## Instalação
@@ -171,8 +171,8 @@ Passando flags
 Instale Pytest Markdown Report
 
 ```bash
-  cargo run --release
-  cp ./target/release/pytest_markdown_report caminho_destino
+cargo run --release
+cp ./target/release/pytest_markdown_report caminho_destino
 ```
 
 Desta forma você vai ter o executável no caminho de destino
@@ -181,8 +181,8 @@ e pode executa-lo com ```./pytest_markdown_report```
 Se quiser executar em qualquer lugar do seu pc você pode copiar para o /bin, mas isso só vai funcionar em sistemas baseados no Linux.
 
 ```bash
-  cargo run --release
-  cp ./target/release/pytest_markdown_report /bin
+cargo run --release
+cp ./target/release/pytest_markdown_report /bin
 ```
 
 ## Autores
