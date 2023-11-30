@@ -4,3 +4,4 @@ venv
 report.md
 __pycache__
 .pytest_cache
+*.todo
