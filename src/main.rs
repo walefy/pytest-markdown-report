@@ -90,7 +90,7 @@ fn main() {
     map_optional_sections.insert("footer", eval_config.read_section("f"));
 
     for (key, value) in &config_emojis_map {
-        emoji_map.insert(key.as_str(), value);
+        emoji_map.insert(key, value);
     }
 
     let selected_lines: Vec<&str> = output_splitted
