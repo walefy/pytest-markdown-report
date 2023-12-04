@@ -7,10 +7,20 @@ pub struct EvalConfig {
 pub trait EvalConfigTrait {
     fn read_variables(&self, variable_prefix: &str) -> HashMap<String, String>;
     fn read_section(&self, section_prefix: &str) -> String;
-    fn new(file_path: String) -> EvalConfig;
+    fn new(file_path: String) -> Self;
 }
 
 impl EvalConfigTrait for EvalConfig {
+    fn new(config_string: String) -> Self {
+        let mut eval_config = EvalConfig {
+            content: String::new(),
+        };
+
+        eval_config.content = config_string;
+
+        eval_config
+    }
+
     fn read_variables(&self, variable_prefix: &str) -> HashMap<String, String> {
         let mut result: HashMap<String, String> = HashMap::new();
 
@@ -60,16 +70,6 @@ impl EvalConfigTrait for EvalConfig {
         }
 
         section_text
-    }
-
-    fn new(config_string: String) -> EvalConfig {
-        let mut eval_config = EvalConfig {
-            content: String::new(),
-        };
-
-        eval_config.content = config_string;
-
-        eval_config
     }
 }
 

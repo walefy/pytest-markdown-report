@@ -17,20 +17,20 @@ fn write_md(
 ) -> Result<(), Error> {
     let mut file = File::create(output_file_path)?;
 
-    file.write(
+    file.write_all(
         map_optional_sections
             .get("header")
             .unwrap_or(&"".to_string())
             .as_bytes(),
     )?;
 
-    file.write(b"\n")?;
-    file.write(b"*name* | *passed*\n")?;
-    file.write(b"--- | :---:\n")?;
-    file.write(list.join("\n").as_bytes())?;
-    file.write(b"\n\n")?;
+    file.write_all(b"\n")?;
+    file.write_all(b"*name* | *passed*\n")?;
+    file.write_all(b"--- | :---:\n")?;
+    file.write_all(list.join("\n").as_bytes())?;
+    file.write_all(b"\n\n")?;
 
-    file.write(
+    file.write_all(
         map_optional_sections
             .get("footer")
             .unwrap_or(&"".to_string())
@@ -55,7 +55,7 @@ fn get_or_default(map: &HashMap<String, String>, key: &str, default: String) -> 
 
 fn main() {
     let args: Args = Args::parse();
-    let config_content = read_file(args.config_file).unwrap_or(String::new());
+    let config_content = read_file(args.config_file).unwrap_or_default();
     let eval_config = EvalConfig::new(config_content);
 
     let config_in_file = eval_config.read_variables("c");
