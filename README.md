@@ -170,8 +170,10 @@ cargo run --release -- -c ./config.txt
 
 Instale Pytest Markdown Report
 
+Você pode simplismente baixar o executável para linux em releases ou buildar o projeto no seu computador como mostra a baixo.
+
 ```bash
-cargo run --release
+cargo build --release
 cp ./target/release/pytest_markdown_report caminho_destino
 ```
 
@@ -181,7 +183,7 @@ e pode executa-lo com ```./pytest_markdown_report```
 Se quiser executar em qualquer lugar do seu pc você pode copiar para o /bin, mas isso só vai funcionar em sistemas baseados no Linux.
 
 ```bash
-cargo run --release
+cargo build --release
 cp ./target/release/pytest_markdown_report /bin
 ```
 
