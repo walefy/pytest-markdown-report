@@ -175,6 +175,7 @@ Você pode simplismente baixar o executável para linux em releases ou buildar o
 ```bash
 cargo build --release
 cp ./target/release/pytest_markdown_report caminho_destino
+chmod +x caminho_de_destino/pytest_markdown_report
 ```
 
 Desta forma você vai ter o executável no caminho de destino
@@ -185,6 +186,7 @@ Se quiser executar em qualquer lugar do seu pc você pode copiar para o /bin, ma
 ```bash
 cargo build --release
 cp ./target/release/pytest_markdown_report /bin
+chmod +x /bin/pytest_markdown_report
 ```
 
 ## Autores
